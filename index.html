@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>M416 Glacier 3D Studio</title>
+    <style>
+      :root {
+        --bg-color: #090b10;
+        --panel-bg: rgba(15, 18, 28, 0.92);
+        --panel-border: rgba(255, 255, 255, 0.12);
+        --accent-cyan: #38bdf8;
+        --accent-teal: #00f5d4;
+        --text-primary: #f1f5f9;
+        --text-secondary: #94a3b8;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0; padding: 0;
+        width: 100vw; height: 100vh;
+        background: var(--bg-color);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: var(--text-primary);
+        overflow: hidden;
+        user-select: none;
+      }
+      #stage { width: 100vw; height: 100vh; }
+      canvas { display: block; width: 100%; height: 100%; }
+
+      /* Minimal HUD */
+      #hud {
+        position: fixed; left: 12px; top: 12px;
+        font: 10px/1.3 monospace; color: var(--text-secondary);
+        z-index: 10; pointer-events: none; opacity: 0.75;
+      }
+
+      /* Ultra-Compact Floating Card UI (190px Width, Height Fit-Content) */
+      #control-panel {
+        position: fixed; right: 12px; top: 12px; bottom: auto;
+        width: 190px;
+        background: var(--panel-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--panel-border);
+        border-radius: 8px;
+        padding: 10px;
+        z-index: 20;
+        display: flex; flex-direction: column; gap: 10px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      }
+
+      .panel-header {
+        border-bottom: 1px solid var(--panel-border);
+        padding-bottom: 6px;
+      }
+      .panel-title { font-size: 12px; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
+      .panel-subtitle { font-size: 9px; color: var(--accent-cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+      .section-group { display: flex; flex-direction: column; gap: 4px; }
+      .section-label { font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.5px; }
+
+      /* Vector SVG Icons */
+      .svg-icon {
+        width: 12px; height: 12px; fill: none; stroke: currentColor;
+        stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        display: inline-block; vertical-align: middle;
+      }
+
+      /* Compact Action Buttons */
+      .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+      .btn-full { width: 100%; }
+      .btn {
+        padding: 5px 6px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--panel-border);
+        border-radius: 5px;
+        color: var(--text-primary);
+        font-size: 10px; font-weight: 600;
+        cursor: pointer; transition: all 0.15s ease;
+        display: flex; align-items: center; justify-content: center; gap: 4px;
+        text-align: center;
+      }
+      .btn:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.25); }
+      .btn:active { transform: scale(0.97); }
+
+      .btn-explode {
+        background: rgba(56, 189, 248, 0.12);
+        border-color: var(--accent-cyan);
+        color: var(--accent-cyan);
+        font-weight: 700;
+      }
+      .btn-explode.active {
+        background: rgba(239, 68, 68, 0.2);
+        border-color: #ef4444;
+        color: #ef4444;
+      }
+
+      .btn-autofire.active {
+        background: rgba(0, 245, 212, 0.2);
+        border-color: var(--accent-teal);
+        color: var(--accent-teal);
+      }
+
+      .btn-preset.active {
+        background: rgba(56, 189, 248, 0.2);
+        border-color: var(--accent-cyan);
+        color: var(--accent-cyan);
+      }
+
+      /* Compact Toggle Rows */
+      .toggle-row { display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: var(--text-primary); }
+      .toggle-row input[type=checkbox] { cursor: pointer; width: 12px; height: 12px; accent-color: var(--accent-cyan); margin: 0; }
+
+      /* Keybindings Footer */
+      .key-info {
+        font-size: 8.5px; color: var(--text-secondary);
+        border-top: 1px solid var(--panel-border); padding-top: 6px;
+        display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      }
+      .key-tag { background: rgba(255,255,255,0.08); padding: 1px 3px; border-radius: 3px; font-family: monospace; color: var(--text-primary); }
+    </style>
+  </head>
+  <body>
+    <div id="stage"></div>
+    <div id="hud"></div>
+
+    <!-- Ultra-Compact Floating Card Sidebar (190px Width, Height Fit-Content) -->
+    <div id="control-panel">
+      <div class="panel-header">
+        <div class="panel-title">M416 Glacier</div>
+        <div class="panel-subtitle">3D Studio</div>
+      </div>
+
+      <!-- 3D Disassembly Button -->
+      <div class="section-group">
+        <button id="btn-explode-toggle" class="btn btn-explode btn-full">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          Disassemble
+        </button>
+      </div>
+
+      <!-- Action & Firing Controls -->
+      <div class="section-group">
+        <div class="section-label">Actions</div>
+        <div class="btn-grid">
+          <button id="btn-fire" class="btn">
+            <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line></svg>
+            Single
+          </button>
+          <button id="btn-autofire-toggle" class="btn btn-autofire">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
+            Auto
+          </button>
+        </div>
+        <button id="btn-reload" class="btn btn-full">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+          Reload Mag
+        </button>
+      </div>
+
+      <!-- Skin Presets -->
+      <div class="section-group">
+        <div class="section-label">Skin Presets</div>
+        <div class="btn-grid">
+          <button id="preset-glacier" class="btn btn-preset active">Glacier</button>
+          <button id="preset-fde" class="btn btn-preset">FDE Tan</button>
+          <button id="preset-stealth" class="btn btn-preset">Stealth</button>
+          <button id="preset-cyberpunk" class="btn btn-preset">Neon</button>
+        </div>
+      </div>
+
+      <!-- Camera Angles -->
+      <div class="section-group">
+        <div class="section-label">Camera Angle</div>
+        <div class="btn-grid">
+          <button id="cam-hero" class="btn btn-preset">Hero</button>
+          <button id="cam-side" class="btn btn-preset">Side</button>
+          <button id="cam-muzzle" class="btn btn-preset">Muzzle</button>
+          <button id="cam-stock" class="btn btn-preset">Stock</button>
+        </div>
+      </div>
+
+      <!-- Settings Toggles -->
+      <div class="section-group">
+        <div class="section-label">Settings</div>
+        <div class="toggle-row">
+          <span>Slow-Mo (0.1x)</span>
+          <input id="toggle-slowmo" type="checkbox" />
+        </div>
+        <div class="toggle-row">
+          <span>Auto-Orbit</span>
+          <input id="toggle-orbit" type="checkbox" />
+        </div>
+        <div class="toggle-row">
+          <span>Foregrip</span>
+          <input id="toggle-foregrip" type="checkbox" checked />
+        </div>
+        <div class="toggle-row">
+          <span>Iron Sights</span>
+          <input id="toggle-sights" type="checkbox" checked />
+        </div>
+        <div class="toggle-row">
+          <span>STANAG Mag</span>
+          <input id="toggle-mag" type="checkbox" checked />
+        </div>
+      </div>
+
+      <!-- Key Shortcuts -->
+      <div class="key-info">
+        <div><span class="key-tag">E</span> Explode</div>
+        <div><span class="key-tag">Space</span> Shoot</div>
+        <div><span class="key-tag">F</span> Auto-Fire</div>
+        <div><span class="key-tag">R</span> Reload</div>
+      </div>
+    </div>
+
+    <script type="module" src="/viewer/main.ts"></script>
+  </body>
+</html>
