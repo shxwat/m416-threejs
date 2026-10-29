@@ -38,7 +38,7 @@
     ],
     "descriptionRule": "Use measurable 3D graphics terms. Avoid vague words unless they are paired with concrete geometry/material/shader parameters."
   },
-  "sourceImage": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
+  "sourceImage": null,
   "referenceCamera": {
     "solved": false,
     "fovDegrees": 40.0,
@@ -406,7 +406,7 @@
       "confidence": 0.0,
       "note": "Only meaningful when objectClass.primaryDomain is character or hybrid. Set applies=true and fill from forge/stage1_intake/extract_landmarks.py. See grimoire/character/reconstruction.md and grimoire/character/likeness_maximization.md."
     },
-    "sourceImage": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png"
+    "sourceImage": null
   },
   "qualityContract": {
     "qualityBar": "complex",
@@ -11371,9 +11371,9 @@
           "notes": "Macro silhouette reads clearly as the compact bullpup SMG: suppressed barrel, tall shroud/receiver, mouth bulge on top, grip+trigger guard, curved magazine, wing stock. Proportions match (aspect delta 0.0002, scale delta 0.018). Ornamental flourishes deferred to later passes."
         }
       ],
-      "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-      "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/blockout_clay.png",
-      "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/blockout_cmp.png",
+      "referenceScreenshot": null,
+      "renderScreenshot": "renders/blockout_clay.png",
+      "comparisonImage": null,
       "cameraView": "side",
       "notes": "",
       "aiVisionNotes": "Silhouette + proportions correct for blockout; color/ornament intentionally absent (clay)."
@@ -11399,9 +11399,9 @@
           "notes": "Meso sub-assemblies present and correctly placed: mouth-void, upper/lower lips (glossy grin geometry), trigger-guard loop, top rail, foresight, stock neck bridging receiver to wing stock. No floating parts; attachment tubes (suppressor/band) connect to the receiver."
         }
       ],
-      "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-      "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/structural_clay.png",
-      "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/structural-pass_cmp.png",
+      "referenceScreenshot": null,
+      "renderScreenshot": "renders/structural_clay.png",
+      "comparisonImage": null,
       "cameraView": "side",
       "notes": "",
       "aiVisionNotes": "Structural pass: meso sub-assemblies (grin geometry, guard, sights, stock neck, fins) placed and connected; hierarchy reads correctly in clay."
@@ -11427,9 +11427,9 @@
           "notes": "Grin geometry complete: upper/lower crimson lip ridges (curve-sweep), full row of square teeth filling the mouth, curling tongue, dark void behind. Reads as an open grinning mouth in clay; colour applied next pass."
         }
       ],
-      "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-      "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/form_clay.png",
-      "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/form-refinement_cmp.png",
+      "referenceScreenshot": null,
+      "renderScreenshot": "renders/form_clay.png",
+      "comparisonImage": null,
       "cameraView": "side",
       "notes": "",
       "aiVisionNotes": "Form refinement: teeth row + tongue + lip ridges complete the grin geometry; gems seated into grip/stock."
@@ -11461,9 +11461,9 @@
           "notes": "Joker palette present and on-tone: violet chassis, crimson glossy lips with white teeth + pink tongue grin, lime-green muzzle band, red foresight, navy grip/magazine, green gem accent."
         }
       ],
-      "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-      "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/material_eval.png",
-      "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/material-pass_cmp.png",
+      "referenceScreenshot": null,
+      "renderScreenshot": "renders/material_eval.png",
+      "comparisonImage": null,
       "cameraView": "side",
       "notes": "",
       "aiVisionNotes": "Material pass: grinning-mouth motif (glossy red lips, teeth, tongue, void) reads clearly; violet glossy chassis + lime band + red/navy accents match the joker palette."
@@ -11489,9 +11489,9 @@
           "notes": "Scattered card-suit colour accents (red heart, lime club, navy spade, pink diamond) and lime-green trim edge strips present on body and stock; stylized colour pips rather than exact suit glyphs."
         }
       ],
-      "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-      "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/surface_eval.png",
-      "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/surface-pass_cmp.png",
+      "referenceScreenshot": null,
+      "renderScreenshot": "renders/surface_eval.png",
+      "comparisonImage": null,
       "cameraView": "side",
       "notes": "",
       "aiVisionNotes": "Surface pass: card-suit colour accents + lime trim edges + chassis micro-normal; joker ornamentation reads at a stylized level."
@@ -11517,9 +11517,9 @@
           "notes": "Studio three-point setup (warm key front-left, cool fill, back rim) + RoomEnvironment reflection makes the glossy clearcoat chassis and the crimson lip specular read clearly; soft ground shadow grounds the floating weapon on a dark charcoal backdrop, matching the reference marketplace-render lighting."
         }
       ],
-      "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-      "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/lighting_hero.png",
-      "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/lighting-pass_cmp.png",
+      "referenceScreenshot": null,
+      "renderScreenshot": "renders/lighting_hero.png",
+      "comparisonImage": null,
       "cameraView": "side",
       "notes": "",
       "aiVisionNotes": "Lighting pass: studio 3-point + environment + soft ground shadow; gloss/clearcoat and lip specular read; matches the reference showcase lighting."
@@ -11538,9 +11538,9 @@
         "lightingCamera": 0.74
       },
       "featureReviews": [],
-      "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-      "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/lighting_hero.png",
-      "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/interaction-pass_cmp.png",
+      "referenceScreenshot": null,
+      "renderScreenshot": "renders/lighting_hero.png",
+      "comparisonImage": null,
       "cameraView": "side",
       "notes": "",
       "aiVisionNotes": "Interaction pass: root.userData.sculptRuntime exposes nodes/meshes/sockets/colliders/destructionGroups; magazine flagged detachable; parts are individually named pivots ready to animate."
@@ -11576,9 +11576,9 @@
       "codeFixes": [],
       "evidence": [],
       "visualEvidence": {
-        "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-        "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/blockout_clay.png",
-        "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/blockout_cmp.png",
+        "referenceScreenshot": null,
+        "renderScreenshot": "renders/blockout_clay.png",
+        "comparisonImage": null,
         "cameraView": "side",
         "notes": "",
         "aiVisionNotes": "Silhouette + proportions correct for blockout; color/ornament intentionally absent (clay)."
@@ -11613,9 +11613,9 @@
       "codeFixes": [],
       "evidence": [],
       "visualEvidence": {
-        "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-        "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/structural_clay.png",
-        "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/structural-pass_cmp.png",
+        "referenceScreenshot": null,
+        "renderScreenshot": "renders/structural_clay.png",
+        "comparisonImage": null,
         "cameraView": "side",
         "notes": "",
         "aiVisionNotes": "Structural pass: meso sub-assemblies (grin geometry, guard, sights, stock neck, fins) placed and connected; hierarchy reads correctly in clay."
@@ -11650,9 +11650,9 @@
       "codeFixes": [],
       "evidence": [],
       "visualEvidence": {
-        "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-        "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/form_clay.png",
-        "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/form-refinement_cmp.png",
+        "referenceScreenshot": null,
+        "renderScreenshot": "renders/form_clay.png",
+        "comparisonImage": null,
         "cameraView": "side",
         "notes": "",
         "aiVisionNotes": "Form refinement: teeth row + tongue + lip ridges complete the grin geometry; gems seated into grip/stock."
@@ -11693,9 +11693,9 @@
       "codeFixes": [],
       "evidence": [],
       "visualEvidence": {
-        "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-        "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/material_eval.png",
-        "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/material-pass_cmp.png",
+        "referenceScreenshot": null,
+        "renderScreenshot": "renders/material_eval.png",
+        "comparisonImage": null,
         "cameraView": "side",
         "notes": "",
         "aiVisionNotes": "Material pass: grinning-mouth motif (glossy red lips, teeth, tongue, void) reads clearly; violet glossy chassis + lime band + red/navy accents match the joker palette."
@@ -11730,9 +11730,9 @@
       "codeFixes": [],
       "evidence": [],
       "visualEvidence": {
-        "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-        "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/surface_eval.png",
-        "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/surface-pass_cmp.png",
+        "referenceScreenshot": null,
+        "renderScreenshot": "renders/surface_eval.png",
+        "comparisonImage": null,
         "cameraView": "side",
         "notes": "",
         "aiVisionNotes": "Surface pass: card-suit colour accents + lime trim edges + chassis micro-normal; joker ornamentation reads at a stylized level."
@@ -11767,9 +11767,9 @@
       "codeFixes": [],
       "evidence": [],
       "visualEvidence": {
-        "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-        "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/lighting_hero.png",
-        "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/lighting-pass_cmp.png",
+        "referenceScreenshot": null,
+        "renderScreenshot": "renders/lighting_hero.png",
+        "comparisonImage": null,
         "cameraView": "side",
         "notes": "",
         "aiVisionNotes": "Lighting pass: studio 3-point + environment + soft ground shadow; gloss/clearcoat and lip specular read; matches the reference showcase lighting."
@@ -11797,9 +11797,9 @@
       "codeFixes": [],
       "evidence": [],
       "visualEvidence": {
-        "referenceScreenshot": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
-        "renderScreenshot": "/Users/shashwat/joker-smg-skin/renders/lighting_hero.png",
-        "comparisonImage": "/Users/shashwat/joker-smg-skin/renders/interaction-pass_cmp.png",
+        "referenceScreenshot": null,
+        "renderScreenshot": "renders/lighting_hero.png",
+        "comparisonImage": null,
         "cameraView": "side",
         "notes": "",
         "aiVisionNotes": "Interaction pass: root.userData.sculptRuntime exposes nodes/meshes/sockets/colliders/destructionGroups; magazine flagged detachable; parts are individually named pivots ready to animate."

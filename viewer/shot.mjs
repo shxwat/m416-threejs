@@ -7,7 +7,7 @@ const EXE = '/Users/shashwat/Library/Caches/ms-playwright/chromium-1228/chrome-m
   'Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing';
 
 const mode = process.argv[2] || 'clay';
-const out = process.argv[3] || `/Users/shashwat/joker-smg-skin/renders/${mode}.png`;
+const out = process.argv[3] || `renders/${mode}.png`;
 const width = process.argv[4] || '1400';
 const port = process.argv[5] || process.env.PORT || '5173';
 const url = `http://localhost:${port}/?mode=${mode}&w=${width}`;

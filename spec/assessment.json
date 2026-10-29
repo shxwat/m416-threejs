@@ -1,6 +1,6 @@
 {
   "targetName": "Joker SMG",
-  "sourceImage": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png",
+  "sourceImage": null,
   "preSpecAssessment": {
     "objectClass": {
       "primaryType": "bullpup submachine gun / carbine (stylized weapon skin)",
@@ -82,7 +82,7 @@
       "confidence": 0.0,
       "note": "Only meaningful when objectClass.primaryDomain is character or hybrid. Set applies=true and fill from forge/stage1_intake/extract_landmarks.py. See grimoire/character/reconstruction.md and grimoire/character/likeness_maximization.md."
     },
-    "sourceImage": "/Users/shashwat/joker-smg-skin/refs/ref_matte.png"
+    "sourceImage": null
   },
   "qualityContract": {
     "qualityBar": "complex",

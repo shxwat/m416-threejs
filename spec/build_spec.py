@@ -22,14 +22,18 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 import sys
 from pathlib import Path
 
-R = Path("/Users/shashwat/joker-smg-skin")
+R = Path(__file__).resolve().parents[1]
 SPEC = R / "spec" / "joker-smg-spec.json"
-MATTE = R / "refs" / "ref_matte.png"
+# The alpha matte used for colour sampling is not distributed with this repo;
+# point REF_MATTE at your own matte image to re-run this builder.
+MATTE = Path(os.environ.get("REF_MATTE", "ref_matte.png"))
 
-sys.path.insert(0, "/Users/shashwat/img2threejs/forge/stage1_intake")
+# Requires the img2threejs toolchain (not included); set IMG2THREEJS to its path.
+sys.path.insert(0, os.path.join(os.environ.get("IMG2THREEJS", "img2threejs"), "forge", "stage1_intake"))
 from extract_pbr_evidence import load_image  # noqa: E402
 from extract_part_color_recipe import srgb_to_lab, lab_to_rgba, lab_kmeans_palette  # noqa: E402
 
